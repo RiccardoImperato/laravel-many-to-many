@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -27,8 +28,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -36,7 +38,11 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request, Project $project)
     {
+
         $data = $request->validated();
+
+        $project = new Project();
+
         $project->fill($data);
         $project->slug = Str::slug($data['title']);
 
@@ -45,7 +51,12 @@ class ProjectController extends Controller
         };
 
         $project->save();
-        return redirect()->route('admin.projects.index', $project)->with('message', "Progetto $project->title creato correttamente");
+
+        if (isset($data['technologies'])) {
+            $project->technologies()->sync($data['technologies']);
+        }
+
+        return redirect()->route('admin.projects.index')->with('message', "Progetto $project->title creato correttamente");
     }
 
     /**
