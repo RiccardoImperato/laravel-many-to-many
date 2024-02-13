@@ -72,6 +72,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type_title = $type->title;
+        $type->delete();
+        return redirect()->route('admin.types.index')->with('message', "Tipo $type_title eliminato correttamente");
     }
 }
