@@ -8,7 +8,7 @@
     <div>
         <h3>{{ $project->title }}</h3>
         @if ($project->project_img)
-            <div>
+            <div class="card" style="width: 18rem;">
                 <img src="{{ asset('storage/' . $project->project_img) }}">
             </div>
         @endif
