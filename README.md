@@ -1,3 +1,3 @@
 # Laravel Boolfolio - Project Typology
 
-        
+  
