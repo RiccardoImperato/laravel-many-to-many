@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="my-3">
+    <div class="d-flex justify-content-between align-items-center my-3">
+        <h2>Progetti</h2>
         <a href="{{ route('admin.projects.create') }}" class="btn btn-primary btn-sm">Nuovo progetto</a>
     </div>
     @if (session('message'))
