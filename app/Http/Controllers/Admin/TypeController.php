@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
 use App\Models\Type;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class TypeController extends Controller
