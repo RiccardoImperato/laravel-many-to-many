@@ -15,7 +15,6 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::all();
-
         return view('admin.types.index', compact('types'));
     }
 
@@ -36,9 +35,7 @@ class TypeController extends Controller
         $type = new Type();
         $type->title = $data['title'];
         $type->slug = Str::slug($data['title']);
-
         $type->save();
-
         return redirect()->route('admin.types.index')->with('message', "Tipo $type->title creato correttamente");
     }
 
@@ -66,7 +63,6 @@ class TypeController extends Controller
         $data = $request->validated();
         $type->slug = Str::slug($data['title']);
         $type->update($data);
-
         return redirect()->route('admin.types.index', compact('type'));
     }
 
