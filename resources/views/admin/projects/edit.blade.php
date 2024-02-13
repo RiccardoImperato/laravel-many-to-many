@@ -1,8 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm my-3">Indietro</a>
-    <h3>Modifica progetto: {{ $project->title }}</h3>
+    <div class="d-flex justify-content-between align-items-center my-3">
+        <h2>Modifica progetto: {{ $project->title }}</h2>
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm my-3">Indietro</a>
+    </div>
     <form action="{{ route('admin.projects.update', $project) }}" method="POST">
         @csrf
         @method('PUT')

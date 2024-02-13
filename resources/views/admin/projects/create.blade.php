@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm my-3">Indietro</a>
+    <div class="d-flex justify-content-between align-items-center my-3">
+        <h2>Crea nuovo progetto</h2>
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm my-3">Indietro</a>
+    </div>
     <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
