@@ -36,9 +36,8 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request, Project $project)
+    public function store(StoreProjectRequest $request)
     {
-
         $data = $request->validated();
 
         $project = new Project();
@@ -56,15 +55,15 @@ class ProjectController extends Controller
             $project->technologies()->sync($data['technologies']);
         }
 
-        return redirect()->route('admin.projects.index')->with('message', "Progetto $project->title creato correttamente");
+        return redirect()->route('admin.projects.index', $project)->with('message', "Progetto $project->title creato correttamente");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(Project $project, Technology $technology)
     {
-        return view('admin.projects.show', compact('project'));
+        return view('admin.projects.show', compact('project', 'technology'));
     }
 
     /**
@@ -73,8 +72,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -85,6 +85,13 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->slug = Str::slug($data['title']);
         $project->update($data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->sync([]);
+        }
+
         return redirect()->route('admin.projects.show', compact('project'));
     }
 
