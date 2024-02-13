@@ -18,13 +18,13 @@
             </div>
         </div>
     @endif
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Repository</th>
                 <th scope="col">Description</th>
-                <th scope="col">Handle</th>
+                <th scope="col" class="text-end">Handle</th>
             </tr>
         </thead>
         <tbody>

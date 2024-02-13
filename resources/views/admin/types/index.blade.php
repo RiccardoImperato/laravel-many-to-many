@@ -18,13 +18,13 @@
             </div>
         </div>
     @endif
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Type</th>
                 <th scope="col">Slug</th>
-                <th scope="col">Handle</th>
+                <th scope="col" class="text-end">Handle</th>
             </tr>
         </thead>
         <tbody>
@@ -34,14 +34,13 @@
                     <td>{{ $type->title }}</td>
                     <td>{{ $type->slug }}</td>
                     <td>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-end">
                             <a href="{{ route('admin.types.edit', $type) }}"
                                 class="btn btn-secondary btn-sm mx-2">Modifica</a>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal-{{ $type->id }}">
                                 Elimina
                             </button>
-
                             <div class="modal fade" id="exampleModal-{{ $type->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">

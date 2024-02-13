@@ -18,13 +18,13 @@
             </div>
         </div>
     @endif
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Type</th>
                 <th scope="col">Slug</th>
-                <th scope="col">Handle</th>
+                <th scope="col" class="text-end">Handle</th>
             </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
                     <td>{{ $technology->title }}</td>
                     <td>{{ $technology->slug }}</td>
                     <td>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-end">
                             <a href="{{ route('admin.technologies.edit', $technology) }}"
                                 class="btn btn-secondary btn-sm mx-2">Modifica</a>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
@@ -67,7 +67,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </td>
                 </tr>
