@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Technology extends Model
 {
     use HasFactory;
-    protected $guarded = ['projects'];
+    protected $guarded = ['projects', 'slug'];
 
     public function projects()
     {
