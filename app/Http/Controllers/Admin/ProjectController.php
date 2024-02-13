@@ -100,10 +100,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        $project->technologies()->sync([]);
+
         if ($project->project_img) {
             Storage::delete($project->project_img);
         }
-
 
         $project->delete();
         return redirect()->route('admin.projects.index');
