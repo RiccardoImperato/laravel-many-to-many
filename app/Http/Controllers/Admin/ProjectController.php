@@ -92,7 +92,7 @@ class ProjectController extends Controller
             $project->technologies()->sync([]);
         }
 
-        return redirect()->route('admin.projects.show', compact('project'));
+        return redirect()->route('admin.projects.show', compact('project'))->with('message', "Progetto $project->title modificato");
     }
 
     /**
@@ -108,6 +108,6 @@ class ProjectController extends Controller
         }
 
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', "Progetto $project->title eliminato correttamente");
     }
 }
