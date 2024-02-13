@@ -14,5 +14,11 @@
         @endif
         <p>{{ $project->description }}</p>
         <h5><span class="badge text-bg-dark">{{ $project->type?->title }}</span></h5>
+        <h5>Tecnologie:</h5>
+        <ul>
+            @foreach ($project->technologies as $technology)
+                <li>{{ $technology->title }}</li>
+            @endforeach
+        </ul>
     </div>
 @endsection
